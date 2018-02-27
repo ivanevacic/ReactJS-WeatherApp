@@ -10,6 +10,15 @@ import Weather from './components/Weather';
 const API_KEY = '129410857ca7a65921957e105b006227';
 
 class App extends React.Component {
+  //  Initial state of the object
+  state = {
+    temperature: undefined,
+    city: undefined,
+    country: undefined,
+    humidity: undefined,
+    description: undefined,
+    error: undefined
+  }
   //  Function to fetch weather from API
   getWeather = async (e) => {
     //  Prevent default behavior of the component when we press button
@@ -22,14 +31,31 @@ class App extends React.Component {
     const data = await api_call.json();
     //  Console.log data we get to make sure it works
     console.log(data);
+    //  Set values of the state based on data we get from API
+    this.setState({
+      temperature: data.main.temp,
+      city: data.name,
+      country: data.sys.country,
+      humidity: data.main.humidity,
+      description: data.weather[0].description,
+      error: ''
+    });
   }
   // Returns JSX
   render(){
     return (
       <div>
         <Titles/>
-        <Form getWeather={this.getWeather}/>
-        <Weather/>
+        <Form getWeather={ this.getWeather }/>
+        <Weather
+        // When we set state here,we have access to this in Weather component  
+          temperature={ this.state.temperature }
+          city={ this.state.city }
+          country={ this.state.county }
+          humidity={ this.state.humidity }
+          description={ this.state.description }
+          error={ this.state.error }
+        />
       </div>
     );
   }
