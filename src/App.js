@@ -63,7 +63,7 @@ class App extends React.Component {
         // When we set state here,we have access to this in Weather component  
           temperature={ this.state.temperature }
           city={ this.state.city }
-          country={ this.state.county }
+          country={ this.state.country }
           humidity={ this.state.humidity }
           description={ this.state.description }
           error={ this.state.error }
