@@ -16,10 +16,8 @@ class App extends React.Component {
     e.preventDefault();
     //  Value from Form input (<input type="text" name="city" placeholder="City.."/>)
     const city = e.target.elements.city.value;
-    //  Value from Form input (<input type="text" name="country" placeholder="Country.."/>)
-    const country = e.target.elements.country.value;
     //  Fetch data from API using our API_KEY
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`);
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
     //  Convert data we get from API to JSON format
     const data = await api_call.json();
     //  Console.log data we get to make sure it works
