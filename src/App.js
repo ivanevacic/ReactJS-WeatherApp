@@ -5,7 +5,6 @@ import Titles from './components/Titles';
 import Form from './components/Form';
 //  Import Weather component
 import Weather from './components/Weather';
-
 //  OpenWeatherMap API key
 const API_KEY = '129410857ca7a65921957e105b006227';
 
@@ -57,21 +56,33 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <Titles/>
-        <Form getWeather={ this.getWeather }/>
-        <Weather
-        // When we set state here,we have access to this in Weather component  
-          temperature={ this.state.temperature }
-          city={ this.state.city }
-          country={ this.state.country }
-          humidity={ this.state.humidity }
-          description={ this.state.description }
-          error={ this.state.error }
-        />
+        <div className="wrapper">
+          <div className="main">
+            <div className="container">
+              <div className="row">
+                <div className="col-xs-5 title-container">
+                  <Titles/>
+                </div>
+                <div className="col-xs-7 form-container">
+                <Form getWeather={ this.getWeather }/>
+                  <Weather
+                    // When we set state here,we have access to this in Weather component  
+                      temperature={ this.state.temperature }
+                      city={ this.state.city }
+                      country={ this.state.country }
+                      humidity={ this.state.humidity }
+                      description={ this.state.description }
+                      error={ this.state.error }
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
-}
+};
 
 //  Export component
 export default App;
