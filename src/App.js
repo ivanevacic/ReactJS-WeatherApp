@@ -11,12 +11,12 @@ const API_KEY = '129410857ca7a65921957e105b006227';
 class App extends React.Component {
   //  Initial state of the object
   state = {
-    temperature: undefined,
-    city: undefined,
-    country: undefined,
-    humidity: undefined,
-    description: undefined,
-    error: undefined
+    temperature: null,
+    city: null,
+    country: null,
+    humidity: null,
+    description: null,
+    error: null
   }
   //  Function to fetch weather from API
   getWeather = async (e) => {
@@ -43,11 +43,11 @@ class App extends React.Component {
       });
     } else {
       this.setState({
-        temperature: undefined,
-        city: undefined,
-        country: undefined,
-        humidity: undefined,
-        description: undefined,
+        temperature: null,
+        city: null,
+        country: null,
+        humidity: null,
+        description: null,
         error: 'Check your input!'
       });
     }
