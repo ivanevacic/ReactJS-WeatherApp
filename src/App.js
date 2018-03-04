@@ -20,18 +20,17 @@ class App extends React.Component {
   }
   //  Function to fetch weather from API
   getWeather = async (e) => {
-    //  Prevent default behavior of the component when we press button
-    e.preventDefault();
-    //  Value from Form input (<input type="text" name="city" placeholder="City.."/>)
-    const city = e.target.elements.city.value;
-    //  Fetch data from API using our API_KEY
+   //  Prevent default behavior of the component when we press button
+   e.preventDefault();
+   //  Value from Form input (<input type="text" name="city" placeholder="City.."/>)
+   const city = e.target.elements.city.value;
+   try {
+    //  Fetch data from API using our API_KEY 
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
     //  Convert data we get from API to JSON format
-    const data = await api_call.json();   
+    const data = await api_call.json();
     //  VALIDATION -> If city returns true,set state
     if(city) {
-    //  Console.log data we get to make sure it works
-    console.log(data);
       //  Set values of the state based on data we get from API
       this.setState({
         temperature: data.main.temp,
@@ -48,9 +47,19 @@ class App extends React.Component {
         country: null,
         humidity: null,
         description: null,
-        error: 'Check your input!'
+        error: 'Please enter city name!'
       });
-    }
+    }   
+   } catch (error) {
+    this.setState({
+      temperature: null,
+      city: null,
+      country: null,
+      humidity: null,
+      description: null,
+      error: 'Not possible to get data for that city'
+    });
+   }   
   }
   // Returns JSX
   render(){
