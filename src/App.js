@@ -6,7 +6,7 @@ import Form from './components/Form';
 //  Import Weather component
 import Weather from './components/Weather';
 //  OpenWeatherMap API key
-const API_KEY = '129410857ca7a65921957e105b006227';
+const API_KEY = process.env.API_WEATHER_KEY;
 
 class App extends React.Component {
   //  Initial state of the object
