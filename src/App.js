@@ -26,7 +26,7 @@ class App extends React.Component {
    const city = e.target.elements.city.value;
    try {
     //  Fetch data from API using our API_KEY 
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
     //  Convert data we get from API to JSON format
     const data = await api_call.json();
     //  VALIDATION -> If city returns true,set state
